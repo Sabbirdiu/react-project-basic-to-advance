@@ -1,10 +1,16 @@
-import logo from './logo.svg';
-
+import React from 'react';
+import Review from '../src/Review'
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <main>
+      <section className='container'>
+        <div className='title'>
+          <h2>our reviews</h2>
+          <div className='underline'></div>
+        </div>
+        <Review />
+      </section>
+    </main>
   );
 }
 
