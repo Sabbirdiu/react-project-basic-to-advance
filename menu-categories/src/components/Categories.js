@@ -1,10 +1,14 @@
 import React from 'react'
-
-const Categories = () => {
+import SingleCategory from './SingleCategory';
+const Categories = ({filterItem,categories}) => {
     return (
-        <div>
-            <p>categories</p>
-        </div>
+        <div className="btn-container">
+        {categories.map((category, index) => {
+          return <SingleCategory key={index} category={category} filterItem={filterItem} /> 
+           
+          
+        })}
+      </div>
     )
 }
 
