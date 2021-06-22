@@ -7,10 +7,12 @@ import Submenu from './components/Submenu'
 function App() {
   return (
     <>
-      <Hero />
+
       <Navbar />
       <Sidebar />
+      <Hero />
       <Submenu />
+
     </>
   );
 }
