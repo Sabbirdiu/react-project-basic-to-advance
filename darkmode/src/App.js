@@ -1,22 +1,40 @@
-
+import React, { useState, useEffect } from "react";
+import Article from './Article'
+import data from './data'
+const getStorageTheme = () => {
+  let theme = 'light-theme';
+  if (localStorage.getItem('theme')) {
+    theme = localStorage.getItem('theme');
+  }
+  return theme;
+};
 function App() {
+  const [theme, setTheme] = useState(getStorageTheme());
+  const toggleTheme = () => {
+    if (theme === 'light-theme') {
+      setTheme('dark-theme');
+    } else {
+      setTheme('light-theme');
+    }
+  };
+  useEffect(() => {
+    document.documentElement.className = theme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <nav>
+        <div className="nav-center">
+          <h1>Theme change mode</h1>
+          <button className="btn" onClick={toggleTheme}>toggle</button>
+        </div>
+        <section className="articles">
+          {data.map((item) => {
+            return <Article key={item.id}{...item} />
+          })}
+        </section>
+      </nav>
+    </main>
   );
 }
 
